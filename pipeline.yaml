@@ -3,12 +3,9 @@ kind: Pipeline
 metadata:
   name: simple-pipeline
 spec:
-	tasks:
-		- name: task-abnormal-retries
-			retries: 1
-			taskSpec:
-				steps:
-				- name: echo
-					image: alpine
-					script: |
-							sleep 50000 && exit
+  tasks:
+  - name: simple-task
+    taskSpec:
+      steps:
+      - image: busybox
+        args: ['-c', 'sleep 10']
