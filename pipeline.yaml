@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: simple-pipeline
+spec:
+	tasks:
+		- name: task-abnormal-retries
+			retries: 1
+			taskSpec:
+				steps:
+				- name: echo
+					image: alpine
+					script: |
+							sleep 50000 && exit
